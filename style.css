@@ -551,36 +551,66 @@ footer {
     .video-info { bottom: 20px; left: 20px; }
 }
 
-/* PARA SA MOBILE (Phones) */
+/* --- MOBILE RESPONSIVE FIXES --- */
 @media (max-width: 768px) {
-    /* Liitan ang font ng pangalan para hindi sakop ang buong screen */
+    
+    /* 1. Global Padding Adjustment - Bawasan ang space sa gilid */
+    section {
+        padding: 50px 20px !important; /* Liitan ang top/bottom at side padding */
+    }
+
+    /* 2. Header Adjustment - Liitan ang top space */
+    .hero-section {
+        padding-top: 100px !important;
+    }
+
+    /* 3. Typography - Oversized fonts reduction */
     .main-title {
-        font-size: 2.5rem !important; 
+        font-size: 2.2rem !important; /* Masyadong malaki yung dating 3rem+ */
         line-height: 1.2;
     }
-
-    /* I-stack ang About section (Text sa taas, Card sa baba) */
-    .hero-content {
-        grid-template-columns: 1fr;
-        padding: 20px;
-        text-align: center;
+    
+    .pre-title {
+        font-size: 0.7rem !important;
     }
 
-    /* Gawing 1 column lang ang Art at Video Gallery para hindi sila maliliit */
-    .grid-container, .video-grid, .photo-grid {
-        grid-template-columns: 1fr !important;
+    .hero-description {
+        font-size: 0.95rem !important;
+    }
+
+    /* 4. Bio Card - Oversized content reduction */
+    .bio-card.glass {
+        padding: 20px !important; /* Bawasan ang padding sa loob ng card */
+        border-radius: 8px;
+    }
+
+    .bio-header {
         gap: 15px;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
     }
 
-    /* Liitan ang padding ng bawat section para hindi masyadong malayo ang agwat */
-    section {
-        padding: 60px 20px !important;
+    .profile-pic {
+        width: 50px; /* Liitan ang profile pic */
+        height: 50px;
     }
 
-    /* Navigation - gawing simple para hindi nagpapatong-patong */
-    .navbar {
-        flex-direction: column;
-        gap: 10px;
-        padding: 15px;
+    .value {
+        font-size: 0.85rem !important; /* Liitan ang text sa loob ng card */
+    }
+
+    .label {
+        font-size: 0.65rem !important;
+    }
+
+    /* 5. Section Titles */
+    .section-title {
+        font-size: 2rem !important;
+    }
+
+    /* 6. Gallery Grids - Ensure 1 column on mobile */
+    .grid-container, .photo-grid, .video-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
     }
 }
