@@ -1,0 +1,552 @@
+/* --- CSS VARIABLES & RESET --- */
+:root {
+    --bg-color: #0c0c0c; /* Mas malalim na itim para sa luxury look */
+    --text-color: #f4f4f4;
+    --text-muted: #888888;
+    --accent: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --font-main: 'Inter', sans-serif;
+    --font-serif: 'Playfair Display', serif; /* Para sa premium italic touch */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- REFINED NAV BAR & BUTTON SIZING --- */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px); /* Glass effect sa nav */
+    background-color: rgba(12, 12, 12, 0.7);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-weight: 300;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-item {
+    font-size: 0.75rem; /* Mas maliit at refined */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted); /* Simula sa muted color */
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+/* Luxury hover effect */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px; /* Napakanipis na puting linya */
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav-item:hover {
+    color: var(--accent); /* Nagiging puti sa hover */
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+/* --- HERO & ABOUT SECTION --- */
+.hero-section {
+    min-height: 100vh;
+    padding: 150px 50px 100px; /* Spacing para sa fixed nav */
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* Text sa kaliwa, Card sa kanan */
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.pre-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.main-title {
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-weight: 900;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    letter-spacing: -0.02em;
+}
+
+.italic-serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none; /* Keep the capitalization natural */
+    opacity: 0.8;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
+    max-width: 600px;
+}
+
+/* Glass Bio Card Design */
+.bio-card.glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 30px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.bio-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--glass-border);
+}
+
+.bio-meta, .detail-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.value {
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+.bio-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.detail-item:first-child, .detail-item:last-child {
+    grid-column: span 2;
+}
+
+/* Background blob decoration */
+.background-blob {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(12,12,12,0) 70%);
+    top: -100px;
+    right: -100px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* --- WORK GALLERY (New Small Format) --- */
+.gallery-section {
+    padding: 100px 50px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.section-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    max-width: 400px;
+    line-height: 1.5;
+}
+
+/* Small, Compact 3-Column Grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tiyak na 3 columns para sa mas maliit na format */
+    gap: 30px;
+}
+
+.card {
+    background-color: #141414; /* Bahagyang mas maliwanag sa bg */
+    border: 1px solid #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.1s ease, border-color 0.3s ease;
+    transform-style: preserve-3d; /* Kailangan para sa tilt effect */
+}
+
+.card:hover {
+    border-color: #333;
+}
+
+/* Compact Image Area */
+.card-image-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* Landscape/mas compact na image ratio */
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05); /* Bahagyang zoom sa image */
+}
+
+.card-details {
+    padding: 20px;
+    transform: translateZ(20px); /* Binibigyan ng depth ang text sa tilt */
+}
+
+.card-details h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.card-details p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* --- FOOTER --- */
+footer {
+    padding: 50px;
+    border-top: 1px solid var(--glass-border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+/* --- RESPONSIVE DESIGN (HCI Principle) --- */
+@media (max-width: 1100px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 50px;
+    }
+    .hero-text-area { display: flex; flex-direction: column; align-items: center; }
+    .hero-description { margin: 0 auto; }
+    .grid-container { grid-template-columns: repeat(2, 1fr); }
+    .navbar { padding: 15px 30px; }
+}
+
+@media (max-width: 768px) {
+    .grid-container { grid-template-columns: 1fr; }
+    .main-title { font-size: 2.5rem; }
+    .gallery-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+}
+
+/* --- PHOTOGRAPHY SECTION --- */
+.photo-section {
+    padding: 100px 50px;
+    background-color: #080808; /* Slightly darker shift */
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.photo-item {
+    position: relative;
+    overflow: hidden;
+    background: #111;
+    border-radius: 4px;
+}
+
+/* LANDSCAPE FORMAT SPECIFIC SIZE */
+.photo-item.landscape {
+    grid-column: span 2; /* Kakainin ang buong width ng row */
+    aspect-ratio: 21 / 9; /* Ultra-wide cinematic format */
+}
+
+.photo-item:not(.landscape) {
+    aspect-ratio: 4 / 5; /* Portrait/Vertical feel para sa balance */
+}
+
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%); /* Luxury desaturated look */
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-item:hover img {
+    transform: scale(1.03);
+    filter: grayscale(0%);
+}
+
+.photo-overlay {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.5);
+}
+
+/* --- CONTACT SECTION --- */
+.contact-section {
+    padding: 150px 50px;
+    border-top: 1px solid var(--glass-border);
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-text h3 {
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 300;
+    margin-bottom: 60px;
+    line-height: 1.2;
+}
+
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.contact-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-link {
+    font-size: 1.2rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 400;
+    transition: opacity 0.3s;
+}
+
+.contact-link:hover {
+    opacity: 0.6;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    padding: 5px 12px;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background: var(--accent);
+    color: #000;
+}
+
+/* Responsive adjust for mobile */
+@media (max-width: 768px) {
+    .contact-info-grid { grid-template-columns: 1fr; gap: 30px; }
+    .photo-item.landscape { aspect-ratio: 16 / 9; } /* Shorter on mobile */
+}
+
+/* --- VIDEO SECTION STYLES --- */
+.video-section {
+    padding: 100px 50px;
+    background-color: #0c0c0c;
+}
+
+.video-container.main-feature {
+    width: 100%;
+    max-width: 1400px;
+    margin: 40px auto;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9; /* Standard Landscape for 3D Renders */
+    border: 1px solid var(--glass-border);
+}
+
+.portfolio-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-info {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    z-index: 2;
+}
+
+.tag {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 10px;
+    backdrop-filter: blur(5px);
+    border-radius: 2px;
+}
+
+/* VIDEO GRID FOR SMALLER CLIPS */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.video-item {
+    position: relative;
+    aspect-ratio: 16 / 9; /* Landscape format */
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+}
+
+.video-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: opacity 0.5s ease;
+}
+
+.video-item:hover video {
+    opacity: 1;
+}
+
+.video-label {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.video-item:hover .video-label {
+    opacity: 1;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .video-grid { grid-template-columns: 1fr; }
+    .video-info { bottom: 20px; left: 20px; }
+}
