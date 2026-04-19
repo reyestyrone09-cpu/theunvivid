@@ -550,3 +550,37 @@ footer {
     .video-grid { grid-template-columns: 1fr; }
     .video-info { bottom: 20px; left: 20px; }
 }
+
+/* PARA SA MOBILE (Phones) */
+@media (max-width: 768px) {
+    /* Liitan ang font ng pangalan para hindi sakop ang buong screen */
+    .main-title {
+        font-size: 2.5rem !important; 
+        line-height: 1.2;
+    }
+
+    /* I-stack ang About section (Text sa taas, Card sa baba) */
+    .hero-content {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Gawing 1 column lang ang Art at Video Gallery para hindi sila maliliit */
+    .grid-container, .video-grid, .photo-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+
+    /* Liitan ang padding ng bawat section para hindi masyadong malayo ang agwat */
+    section {
+        padding: 60px 20px !important;
+    }
+
+    /* Navigation - gawing simple para hindi nagpapatong-patong */
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+}
